@@ -1,9 +1,26 @@
 import math
 
-#basic conversions
+#ref sites
+#https://www.rapidtables.com/convert/index.html
+
+#basic conversions (same type units)
 def inches_to_cm(inches):
-    pass
+    #centimeters = inches × 2.54
+    return inches * 2.54
 def cm_to_inches(cm):
+    #inches = centimeters / 2.54
+    return cm / 2.54
+def ml_to_oz():
+    pass
+def oz_to_ml():
+    pass
+def oz_to_pounds():
+    pass
+def pounds_to_oz():
+    pass
+def oz_to_grams():
+    pass
+def grams_to_oz():
     pass
 
 #volume calculations
@@ -23,11 +40,35 @@ def volume_cylinder_diameter(diameter, height):
     volume = volume_cylinder_radius(radius, height)
     return volume
 
-def clay_volume(inner_diameter, inner_height, wall_thickness, base_thickness = None):
+def volume_difference_inner(inner_diameter, inner_height, wall_thickness, base_thickness = None):
+    #the volume difference can be used to calculate how much clay is necessary for the piece
     if base_thickness == None:
         base_thickness = wall_thickness
     outer_diameter = inner_diameter + (wall_thickness * 2)
     outer_height = inner_height + base_thickness
+    outer_volume = volume_cylinder_diameter(outer_diameter, outer_height)
+    inner_volume = volume_cylinder_diameter(inner_diameter, inner_height)
+    volume_difference = outer_volume - inner_volume
 
+    return volume_difference
 
+#estimation functions
+def estimate_wall_thickness(diameter, height):
     pass
+
+#conversions (different types, e.g. volume -> weight, volume -> oz, etc.)
+def volume_to_oz(volume, units = None):
+    if units is None:
+        units = "cm"
+    pass
+def volume_to_ml(volume, units = None):
+    if units is None:
+        units = "cm"
+    pass
+def oz_to_volume():
+    pass
+def ml_to_volume():
+    pass
+
+#Surface Area (FUTURE, potential glaze cost calculator)
+#https://www.calculator.net/surface-area-calculator.html
