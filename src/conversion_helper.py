@@ -2,6 +2,11 @@ import math
 
 #ref sites
 #https://www.rapidtables.com/convert/index.html
+#AMAZING THING: 1 cubic centimeter = 1 milliliter
+
+#constants
+US_OZ_ML = 29.573529
+UK_OZ_ML = 28.4130625
 
 #basic conversions (same type units)
 def inches_to_cm(inches):
@@ -10,17 +15,19 @@ def inches_to_cm(inches):
 def cm_to_inches(cm):
     #inches = centimeters / 2.54
     return cm / 2.54
-def ml_to_oz():
+def ml_to_oz(ml):
+    # 1 fluid ounce (US) = 29.573529562 milliliter
+    return ml / US_OZ_ML
+def oz_to_ml(oz):
+    # 1 fluid ounce (US) = 29.573529562 milliliter
+    return oz * US_OZ_ML
+def oz_to_pounds(oz):
     pass
-def oz_to_ml():
+def pounds_to_oz(pound):
     pass
-def oz_to_pounds():
+def oz_to_grams(oz):
     pass
-def pounds_to_oz():
-    pass
-def oz_to_grams():
-    pass
-def grams_to_oz():
+def grams_to_oz(gram):
     pass
 
 #volume calculations
