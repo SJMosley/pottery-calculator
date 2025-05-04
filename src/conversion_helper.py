@@ -4,17 +4,24 @@ import math
 #https://www.rapidtables.com/convert/index.html
 #AMAZING THING: 1 cubic centimeter = 1 milliliter
 
-#constants
+#constants relationships
 US_OZ_ML = 29.573529
 UK_OZ_ML = 28.4130625
+OZ_GM = 28.349523125
+INCH_CM = 2.54
+POUND_OZ = 16
 
 #basic conversions (same type units)
 def inches_to_cm(inches):
     #centimeters = inches × 2.54
-    return inches * 2.54
+    return inches * INCH_CM
 def cm_to_inches(cm):
     #inches = centimeters / 2.54
-    return cm / 2.54
+    return cm / INCH_CM
+def inch_to_fluid_oz(inch_volume):
+    return inch_volume * 0.554113
+def fluid_oz_to_inch(fl_oz):
+    return fl_oz / 0.554113
 def ml_to_oz(ml):
     # 1 fluid ounce (US) = 29.573529562 milliliter
     return ml / US_OZ_ML
@@ -22,13 +29,17 @@ def oz_to_ml(oz):
     # 1 fluid ounce (US) = 29.573529562 milliliter
     return oz * US_OZ_ML
 def oz_to_pounds(oz):
-    pass
+    #16 ounce = 1 pound
+    return oz / POUND_OZ
 def pounds_to_oz(pound):
-    pass
+    #16 ounce = 1 pound
+    return pound * POUND_OZ
 def oz_to_grams(oz):
-    pass
+    #1 ounce = 28.349523125 gram
+    return oz * OZ_GM
 def grams_to_oz(gram):
-    pass
+    #1 ounce = 28.349523125 gram
+    return gram / OZ_GM
 
 #volume calculations
 def volume_cube(length):
@@ -63,8 +74,8 @@ def volume_difference_inner(inner_diameter, inner_height, wall_thickness, base_t
 def estimate_wall_thickness(diameter, height):
     pass
 
-#conversions (different types, e.g. volume -> weight, volume -> oz, etc.)
-def volume_to_oz(volume, units = None):
+#conversions (different types, e.g. volume + density -> weight, volume -> oz, etc.)
+def volume_to_weight_oz(volume, units, density):
     if units is None:
         units = "cm"
     pass
@@ -79,3 +90,8 @@ def ml_to_volume():
 
 #Surface Area (FUTURE, potential glaze cost calculator)
 #https://www.calculator.net/surface-area-calculator.html
+
+#density = mass/volume
+#Weight (grams) = Volume (mL) × Density (g/mL)
+#1.8 (g/cm^3)
+#1.8 (g/mL^3)
