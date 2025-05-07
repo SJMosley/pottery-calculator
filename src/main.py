@@ -3,6 +3,7 @@ from pottery_calc_helper import *
 from functools import partial
 from ui.graphics import Input
 import tkinter as tk
+from tkinter import Entry
 
 # def get_text():
 #     text = entry.get()
@@ -19,16 +20,14 @@ def setup_window(window):
     main_frame = tk.Frame()
 
     #Desired Size Input items
-    desired_frame = tk.Frame(master=window, width=40)
-
-    #
-    thrown_frame = tk.Frame()
-    build_desired_frame(desired_frame)
-    build_thrown_frame(thrown_frame)
+    desired_frame = tk.Frame(master=main_frame)
+    thrown_frame = tk.Frame(master=main_frame)
+    desired_inputs = ["Desired Inner Diameter", "Desired Inner Height", "Shrinkage", "Wall Thickness"]
+    thrown_inputs = ["Thrown Inner Diameter", "Thrown Inner Height", "Thrown Wall Thickness"]
+    form_builder(desired_inputs, desired_frame)
+    form_builder(thrown_inputs, thrown_frame)
 
     #Add Calculate Button
-
-
     button = tk.Button(master=desired_frame, text="Calculate Thrown!", command=partial(calculate_thrown, (desired_frame, thrown_frame)))
     # button.bind("<Button-1>", calculate_thrown) #button 1 means left click
     button.pack()
@@ -36,6 +35,16 @@ def setup_window(window):
     thrown_frame.pack(fill=tk.BOTH, side=tk.LEFT, expand=True)
     main_frame.pack()
     window.mainloop()
+def form_builder(input_items, frame):
+    local_items = []
+    for item in input_items:
+        new_input = Input(item, frame)
+        local_items.append(new_input)
+    for item in local_items:
+        item.label.pack()
+        item.entry.pack()
+        input_items.extend(local_items)
+
 def build_desired_frame(desired_frame):
     ui_items = []
     lbl_diameter = tk.Label(master=desired_frame, text="Desired Inner Diameter")
