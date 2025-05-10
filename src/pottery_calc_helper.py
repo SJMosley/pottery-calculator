@@ -94,7 +94,6 @@ def output(values):
         Volume (oz):    {inch_to_fluid_oz(values["desired_volume"])}
 
     THROWN SIZE 🏺
-    DESIRED SIZE
     INNER (Diameter x Height):
         Diameter:       {values["t_i_diameter"]} inches
         Height:         {values["t_i_height"]} inches

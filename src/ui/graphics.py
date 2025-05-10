@@ -14,6 +14,6 @@ class Window:
         self.__running = False
 class Input:
     def __init__(self, name, frame = None, width = 40):
-        self.__name = name
+        self.name = name
         self.label = tk.Label(master=frame, text=name)
         self.entry = tk.Entry(master=frame, width=width)
